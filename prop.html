@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #f7f7f7;
+      animation: backgroundAnimation 3s infinite alternate;
+      transition: background-color 1s ease-in-out;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @keyframes backgroundAnimation {
+      from {
+        background-color: #f7f7f7;
+      }
+      to {
+        background-color: #f087c9;
+      }
+    }
+
+    #proposal-container {
+      margin-top: 10vh;
+    }
+
+    #cat-animation {
+      margin-bottom: 20px;
+    }
+
+    #answer-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .answer-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      animation: floatButton 2s ease-in-out infinite alternate;
+      background: linear-gradient(45deg, #ff6b6b, #ffa07a); /* Gradient background */
+      border: none;
+      color: white;
+      border-radius: 20px;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .answer-button:hover {
+      background: linear-gradient(45deg, #6c5ce7, #fd79a8); /* Gradient background on hover */
+    }
+
+    @keyframes floatButton {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-5px);
+      }
+    }
+
+    h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2em; /* Adjusted font size */
+      color: #6e9af3;
+      margin: 10px 0;
+      position: relative;
+      animation: flipText 10s ease-in-out infinite, glowText 8s ease-in-out infinite;
+    }
+
+    @keyframes flipText {
+      0%, 100% {
+        transform: perspective(400px) rotateY(0deg);
+      }
+      50% {
+        transform: perspective(400px) rotateY(180deg);
+      }
+    }
+
+    @keyframes glowText {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 105, 180, 0.8);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 105, 180, 0.8), 0 0 40px rgba(255, 105, 180, 0.8);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.8em; /* Adjusted font size for smaller screens */
+      }
+
+      .answer-button {
+        font-size: 14px;
+      }
+    }
+
+    /* Added styles for animated gifs */
+    .background-gif {
+      position: absolute;
+      width: 50px;
+      height: auto;
+      pointer-events: none;
+      animation: floatGif 5s infinite alternate;
+    }
+
+    @keyframes floatGif {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="proposal-container">
+  <h2>Are you dumb Gyanu?</h2>
+  <div id="cat-animation">
+    <img src="dumbcat.gif" alt="Cat with Tulip" style="width: 80%; max-width: 150px; height: auto;">
+  </div>
+  <div id="answer-buttons">
+    <button class="answer-button" onclick="displayMessage()">Yes</button>
+    <button class="answer-button" onclick="moveNoButton()">No</button>
+  </div>
+</div>
+
+<!-- Adding background gifs -->
+<script>
+  // Function to create and append gifs dynamically
+  function createBackgroundGifs() {
+    const gifContainer = document.body;
+    const gifCount = 10; // Number of gifs
+
+    for (let i = 0; i < gifCount; i++) {
+      const gif = document.createElement('img');
+      gif.src = 'raincat.gif'; // Path to the gif image
+      gif.className = 'background-gif';
+
+      // Randomize the position of each gif
+      gif.style.left = `${Math.random() * 100}vw`;
+      gif.style.top = `${Math.random() * 100}vh`;
+
+      gifContainer.appendChild(gif);
+    }
+  }
+
+  // Call the function to create gifs when the page is loaded
+  window.onload = createBackgroundGifs;
+</script>
+
+<script>
+  function displayMessage() {
+    window.location.href = 'te_amo_page.html';
+  }
+
+  function moveNoButton() {
+    const noButton = document.querySelector('.answer-button:last-child');
+    const maxX = window.innerWidth - noButton.offsetWidth;
+    const maxY = window.innerHeight - noButton.offsetHeight;
+
+    // Generate random coordinates
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    // Apply new coordinates to the 'No' button
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${randomX}px`;
+    noButton.style.top = `${randomY}px`;
+  }
+</script>
+
+</body>
+</html>

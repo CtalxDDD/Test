@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      animation: fadeIn 1s ease-out, backgroundAnimation 5s infinite alternate;
+      transition: background-color 1s ease-in-out;
+      background-color: #f7f7f7; /* Initial background color */
+      overflow: hidden;
+      position: relative;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes backgroundAnimation {
+      from {
+        background-color: #f7f7f7; /* Initial background color */
+      }
+      to {
+        background-color: #b2fefa; /* Target background color */
+      }
+    }
+    h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      margin: 0;
+      padding: 0;
+      color: #ff69b4; /* Hot Pink */
+      position: relative;
+      animation: neonGlow 1.5s ease-in-out, bounce 6s infinite;
+    }
+    @keyframes neonGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 105, 180, 0.8); /* Neon glow effect */
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 105, 180, 0.8), 0 0 40px rgba(255, 105, 180, 0.8); /* Neon glow effect */
+      }
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-15px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+    .tulip {
+      position: absolute;
+      animation: floatTulip 5s infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes floatTulip {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-10px);
+      }
+    }
+    #cat-gif {
+      max-width: 100%; /* Adjusted size for responsiveness */
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 2em;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+</head>
+<body>
+
+<h2>I Know u are<br> Tulips for you Dumb!!!</h2>
+
+<script>
+  // Function to create tulip elements dynamically
+  function createTulips() {
+    const tulipContainer = document.body;
+    const tulipCount = 50; // Increase the number of tulips
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+
+    for (let i = 0; i < tulipCount; i++) {
+      const tulip = document.createElement('img');
+      tulip.src = 'tulip.gif'; // Path to the tulip GIF image
+      tulip.className = 'tulip';
+      tulip.style.width = '40px'; // Set the size of the tulip
+
+      // Randomize the position of each tulip
+      tulip.style.left = `${Math.random() * windowWidth}px`;
+      tulip.style.top = `${Math.random() * windowHeight}px`;
+
+      tulipContainer.appendChild(tulip);
+    }
+  }
+
+  // Call the function to create tulips when the page is loaded
+  window.onload = createTulips;
+</script>
+
+<img id="cat-gif" src="flower.gif" alt="Cute Cat GIF">
+
+</body>
+</html>
